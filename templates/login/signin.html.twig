@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+    <form method="post">
+        {# {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %} #}
+
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputNom">Nom</label>
+        <input type="text" value="" name="nom" id="inputNom" class="form-control" required autofocus>
+        <label for="inputPrenom">Prenom</label>
+        <input type="text" value="" name="prenom" id="inputPrenom" class="form-control" required autofocus>
+        <label for="inputEmail">Adresse mail</label>
+        <input type="email" value="" name="email" id="inputEmail" class="form-control" required autofocus>
+        <label for="inputIdentifiant">Identifiant</label>
+        <input type="text" value="" name="identifiant" id="inputIdentifiant" class="form-control" required autofocus>
+        <label for="inputPassword">Mot de passe</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" required>
+
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
+
+        {#
+            Uncomment this section and add a 'target_path' parameter to the POST
+            request to specify the URL to redirect to after successful login
+            (e.g. /dashboard)
+        #}
+        {#<input type="hidden" name="_target_path" value="/dashboard">#}
+
+        <button class="btn btn-lg btn-primary mt-3 mb-3" type="submit">
+            Sign in
+        </button>
+    </form>
+{% endblock %}
